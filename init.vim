@@ -32,7 +32,11 @@ call dein#add('easymotion/vim-easymotion')  " For skipping around the page
 call dein#add('mbbill/undotree')  " Undo tree!
 call dein#add('jiangmiao/auto-pairs')  " auto-generate brackets and such
 call dein#add('kien/rainbow_parentheses.vim')  " rainbow parens
+call dein#add('airblade/vim-gitgutter')  " see git changes within a file
+call dein#add('MattesGroeger/vim-bookmarks')  " bookmarks for moving around
+call dein#add('jceb/vim-orgmode')
 
+" DEOPLETE COMPLETION
 call dein#add('Shougo/deoplete.nvim')  " for autocomplete
 " Sources for deoplete
 call dein#add('zchee/deoplete-clang')  " For C, C++
@@ -40,9 +44,6 @@ call dein#add('zchee/deoplete-jedi')   " For python
 
 " Specific plugins for languages
 call dein#add('jalvesaq/Nvim-R')
-
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 " Required:
 call dein#end()
@@ -67,6 +68,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:airline_theme='jellybeans'
+let g:bookmark_no_default_key_mappings = 1
 
 if has("persistent_undo")
     set undodir=~/.undodir/
@@ -89,16 +91,39 @@ let mapleader = "\<Space>"
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+" Bookmarks 
+nmap <Leader><Leader> <Plug>(BookmarkToggle)
+nmap <Leader>i <Plug>(BookmarkAnnotate)
+nmap <Leader>a <Plug>(BookmarkShowAll)
+nmap <Leader>j <Plug>(BookmarkNext)
+nmap <Leader>k <Plug>(BookmarkPrev)
+nmap <Leader>c <Plug>(BookmarkClear)
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+function! s:neosnippet_complete()
+  if pumvisible()
+    return "\<c-n>"
+  else
+    if neosnippet#expandable_or_jumpable() 
+      return "\<Plug>(neosnippet_expand_or_jump)"
+    endif
+    return "\<tab>"
+  endif
+endfunction
+
+imap <expr><TAB> <SID>neosnippet_complete()
+
 
 " #######################################
 " END maps
@@ -108,7 +133,9 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " #######################################
 " START Sane vim native configs
 " #######################################
-
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+set foldmethod=manual
 set number	" Show line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++ 	" Wrap-broken line prefix
@@ -120,6 +147,7 @@ set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
+set updatetime=250
  
 set autoindent	" Auto-indent new lines
 set expandtab	" Use spaces instead of tabs

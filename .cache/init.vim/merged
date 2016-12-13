@@ -1,0 +1,2 @@
+100
+['Shougo/dein.vim', 'Shougo/deoplete.nvim', 'Shougo/neoinclude.vim', 'Shougo/neosnippet-snippets', 'Shougo/neosnippet.vim', 'Shougo/vimshell', 'Xuyuanp/nerdtree-git-plugin', 'c0r73x/neotags.nvim', 'easymotion/vim-easymotion', 'elzr/vim-json', 'jalvesaq/Nvim-R', 'jiangmiao/auto-pairs', 'kien/rainbow_parentheses.vim', 'mbbill/undotree', 'neomake/neomake', 'scrooloose/nerdtree', 'tpope/vim-fugitive', 'vim-airline/vim-airline', 'vim-airline/vim-airline-themes', 'vim-utils/vim-man', 'zchee/deoplete-clang', 'zchee/deoplete-jedi']

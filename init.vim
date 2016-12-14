@@ -7,41 +7,46 @@ endif
 
 " Required:
 set runtimepath+=/home/ian/.config/nvim/repos/github.com/Shougo/dein.vim
-
 " Required:
 call dein#begin('/home/ian/.config/nvim')
-
 " Let dein manage dein
 " Required:
 call dein#add('Shougo/dein.vim')
 
-" Add or remove your plugins here:
+" Coding Specific plugins
 call dein#add('SirVer/ultisnips')  " snippets for vim to be faster
 call dein#add('honza/vim-snippets') " snippet source
 call dein#add('Shougo/neoinclude.vim') " Thing for deoplete
-call dein#add('vim-utils/vim-man')  " for viewing man pages within vim   
-call dein#add('vim-airline/vim-airline')  " airline
-call dein#add('vim-airline/vim-airline-themes')  " themes for airline
-call dein#add('c0r73x/neotags.nvim')  " generate tags for C-like files
-call dein#add('scrooloose/nerdtree')  " enable nerdtree
-call dein#add('Xuyuanp/nerdtree-git-plugin')  " nerdtree git compatibility
 call dein#add('neomake/neomake')  " neomake for syntax cheking
-call dein#add('elzr/vim-json')  " Highlights the json thing correctly
-call dein#add('tpope/vim-fugitive')  " git wrapper
 call dein#add('easymotion/vim-easymotion')  " For skipping around the page
+
+" Interface plugins
 call dein#add('mbbill/undotree')  " Undo tree!
 call dein#add('jiangmiao/auto-pairs')  " auto-generate brackets and such
-call dein#add('kien/rainbow_parentheses.vim')  " rainbow parens
-call dein#add('airblade/vim-gitgutter')  " see git changes within a file
-call dein#add('jceb/vim-orgmode')
+call dein#add('scrooloose/nerdtree')  " enable nerdtree
+call dein#add('c0r73x/neotags.nvim')  " generate tags for C-like files
+call dein#add('elzr/vim-json')  " Highlights the json thing correctly
 
-" DEOPLETE COMPLETION
+" Version control plugins
+call dein#add('airblade/vim-gitgutter')  " see git changes within a file
+call dein#add('tpope/vim-fugitive')  " git wrapper
+call dein#add('Xuyuanp/nerdtree-git-plugin')  " nerdtree git compatibility
+
+" Appearances
+call dein#add('vim-airline/vim-airline')  " airline
+call dein#add('vim-airline/vim-airline-themes')  " themes for airline
+call dein#add('kien/rainbow_parentheses.vim')  " rainbow parens
+
+" External Plugins
+call dein#add('jceb/vim-orgmode')
+call dein#add('vim-utils/vim-man')  " for viewing man pages within vim
+call dein#add('Shougo/denite.nvim')
+
+
+" Languages + Autocomplete
 call dein#add('Shougo/deoplete.nvim')  " for autocomplete
-" Sources for deoplete
 call dein#add('zchee/deoplete-clang')  " For C, C++
 call dein#add('zchee/deoplete-jedi')   " For python
-
-" Specific plugins for languages
 call dein#add('jalvesaq/Nvim-R')
 
 " Required:
@@ -64,10 +69,6 @@ endif
 " #######################################
 " START Variable declarations for plugins
 " #######################################
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#max_list = 20
-let g:deoplete#auto_complete_delay = 1
 let g:airline_theme='jellybeans'
 let g:my_snippet_manager = 'ultisnips'
 let g:EasyMotion_do_mapping = 0
@@ -76,24 +77,57 @@ let g:EasyMotion_do_mapping = 0
 let g:UltiSnipsExpandTrigger="<C-e"
 let g:UltiSnipsJumpForwardTrigger='<C-l>'
 let g:UltiSnipsJumpBackwardTrigger='<C-h>'
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'
-
 " Use Python Version
 let g:UltiSnipsUsePythonVersion = 3
-
 let g:ultisnips_python_style="google"
+
+" Neomake configs
+let g:neomake_open_list = 2
+" Debugging neomake
+"let g:neomake_verbose=3
+"let g:neomake_logfile='/tmp/error.log'
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#max_list = 20
+let g:deoplete#auto_complete_delay = 1
 let g:deoplete#disable_auto_complete = 1
 let mapleader = "\<Space>"
 if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
-
 " stuff for autocompletion in deoplete for C
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header ="/usr/include/clang/"
+
+" Rainbow parens
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 " #######################################
 " END Variable Declaration
 " #######################################
@@ -132,6 +166,7 @@ inoremap <expr> <TAB>
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd! BufWritePost,BufEnter * Neomake
 set foldmethod=manual
 set number      " Show line numbers
 set linebreak   " Break lines at word (requires Wrap lines)

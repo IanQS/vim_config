@@ -16,16 +16,16 @@ call dein#begin('/home/ian/.config/nvim')
 call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neoinclude.vim')
+call dein#add('SirVer/ultisnips')  " snippets for vim to be faster
+call dein#add('honza/vim-snippets') " snippet source
+call dein#add('Shougo/neoinclude.vim') " Thing for deoplete
 call dein#add('vim-utils/vim-man')  " for viewing man pages within vim   
 call dein#add('vim-airline/vim-airline')  " airline
 call dein#add('vim-airline/vim-airline-themes')  " themes for airline
 call dein#add('c0r73x/neotags.nvim')  " generate tags for C-like files
 call dein#add('scrooloose/nerdtree')  " enable nerdtree
 call dein#add('Xuyuanp/nerdtree-git-plugin')  " nerdtree git compatibility
-call dein#add('neomake/neomake')  " neomake for syntax checking
+call dein#add('neomake/neomake')  " neomake for syntax cheking
 call dein#add('elzr/vim-json')  " Highlights the json thing correctly
 call dein#add('tpope/vim-fugitive')  " git wrapper
 call dein#add('easymotion/vim-easymotion')  " For skipping around the page
@@ -33,7 +33,6 @@ call dein#add('mbbill/undotree')  " Undo tree!
 call dein#add('jiangmiao/auto-pairs')  " auto-generate brackets and such
 call dein#add('kien/rainbow_parentheses.vim')  " rainbow parens
 call dein#add('airblade/vim-gitgutter')  " see git changes within a file
-call dein#add('MattesGroeger/vim-bookmarks')  " bookmarks for moving around
 call dein#add('jceb/vim-orgmode')
 
 " DEOPLETE COMPLETION
@@ -67,16 +66,32 @@ endif
 " #######################################
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#max_list = 20
+let g:deoplete#auto_complete_delay = 1
 let g:airline_theme='jellybeans'
-let g:bookmark_no_default_key_mappings = 1
+let g:my_snippet_manager = 'ultisnips'
+let g:EasyMotion_do_mapping = 0
 
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<C-e"
+let g:UltiSnipsJumpForwardTrigger='<C-l>'
+let g:UltiSnipsJumpBackwardTrigger='<C-h>'
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit='vertical'
+
+" Use Python Version
+let g:UltiSnipsUsePythonVersion = 3
+
+let g:ultisnips_python_style="google"
+let g:deoplete#disable_auto_complete = 1
+let mapleader = "\<Space>"
 if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
-
 " #######################################
-" END Plugin starter
+" END Variable Declaration
 " #######################################
 
 
@@ -85,45 +100,25 @@ endif
 " #######################################
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-p> :UndotreeToggle<cr>
-let mapleader = "\<Space>"
-
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" Move to line
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+nnoremap <Leader>j <Plug> (easymotion-j)
+nnoremap <Leader>k <Plug> (easymotion-k)
+nnoremap <Leader>h <Plug>(easymotion-h)
+nnoremap <Leader>l <Plug>(easymotion-l)
 
+nnoremap <silent> <Leader><Leader> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Leader> zf
 
-" Bookmarks 
-nmap <Leader><Leader> <Plug>(BookmarkToggle)
-nmap <Leader>i <Plug>(BookmarkAnnotate)
-nmap <Leader>a <Plug>(BookmarkShowAll)
-nmap <Leader>j <Plug>(BookmarkNext)
-nmap <Leader>k <Plug>(BookmarkPrev)
-nmap <Leader>c <Plug>(BookmarkClear)
-
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-
-function! s:neosnippet_complete()
-  if pumvisible()
-    return "\<c-n>"
-  else
-    if neosnippet#expandable_or_jumpable() 
-      return "\<Plug>(neosnippet_expand_or_jump)"
-    endif
-    return "\<tab>"
-  endif
-endfunction
-
-imap <expr><TAB> <SID>neosnippet_complete()
-
+inoremap <expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+		function! s:check_back_space() abort "{{{
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~ '\s'
+            endfunction"}}}
 
 " #######################################
 " END maps

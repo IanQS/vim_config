@@ -106,7 +106,7 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-p> :UndotreeToggle<cr>
 
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
+map  <Leader>h <Plug>(easymotion-bd-fl)
 map <Leader>j <Plug>(easymotion-bd-jk)
 
 nnoremap <silent> <Leader><Leader> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -144,8 +144,6 @@ if &encoding != 'utf-8'
     set encoding=utf-8          "Necessary to show Unicode glyphs
 endif
 set noshowmode "Don't show the mode(airline is handling this)
-
-
  
 set hlsearch    " Highlight all search results
 set smartcase   " Enable smart-case search

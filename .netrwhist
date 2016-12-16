@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/ian/.emacs.d'
+let g:netrw_dirhist_2='/var'
+let g:netrw_dirhist_3='/home/ian/Dropbox/dbDesktop/CMU/F-16/11-785-DL/project/venv'
+let g:netrw_dirhist_4='/etc/X11/xorg.conf.d'
+let g:netrw_dirhist_5='/home/ian/.vim'
+let g:netrw_dirhist_6='/home/ian/.ssh'
+let g:netrw_dirhist_7='/home/ian/.vim'

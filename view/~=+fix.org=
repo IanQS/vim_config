@@ -28,16 +28,21 @@ inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> â =AutoPairsBackInsert()
 inoremap <buffer> <silent> å =AutoPairsFastWrap()
 nmap <buffer> <silent> I <Plug>OrgEditAtFirstCharacter
+xmap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
+xmap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
+xmap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
+xmap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
 omap <buffer> <silent> OR :normal VOR
 omap <buffer> <silent> Or <Plug>OrgOuterTreeOperator
-vmap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
-vmap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
+smap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
+smap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
 omap <buffer> <silent> OH :normal VOH
 omap <buffer> <silent> Oh <Plug>OrgOuterHeadingOperator
-vmap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
-vmap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
+smap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
+smap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
+xmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
 omap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenOperator
-vmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
+smap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
 nmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenNormal
 nmap <buffer> <silent> \em <Plug>OrgExportToMarkdown
 nmap <buffer> <silent> \eh <Plug>OrgExportToHTML
@@ -79,14 +84,19 @@ nmap <buffer> <silent> \1 zM:set fdl=1
 nmap <buffer> <silent> \0 zM:set fdl=0
 nmap <buffer> <silent> \, <Plug>OrgGlobalToggleFoldingReverse
 nmap <buffer> <silent> \. <Plug>OrgGlobalToggleFoldingNormal
+xmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
 omap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenOperator
-vmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
+smap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
 nmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenNormal
 nmap <buffer> <silent> ^ <Plug>OrgJumpToFirstCharacter
+xmap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
+xmap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
 omap <buffer> <silent> ar :normal Var
-vmap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
+smap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
 omap <buffer> <silent> ah :normal Vah
-vmap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
+smap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
+xmap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
+xmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
 nmap <buffer> <silent> go <Plug>OrgHyperlinkPreviousLink
 nmap <buffer> <silent> gn <Plug>OrgHyperlinkNextLink
 nmap <buffer> <silent> gil <Plug>OrgHyperlinkInsert
@@ -94,23 +104,27 @@ nmap <buffer> <silent> gyl <Plug>OrgHyperlinkCopy
 nmap <buffer> <silent> gl <Plug>OrgHyperlinkFollow
 omap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingOperator
 omap <buffer> <silent> g{ <Plug>OrgJumpToParentOperator
-vmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
-vmap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
+smap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
+smap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
 nmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingNormal
 nmap <buffer> <silent> g{ <Plug>OrgJumpToParentNormal
+xmap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
+xmap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
 omap <buffer> <silent> ir <Plug>OrgInnerTreeOperator
-vmap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
+smap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
 omap <buffer> <silent> ih <Plug>OrgInnerHeadingOperator
-vmap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
+smap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
 nmap <buffer> <silent> m]] <Plug>OrgMoveSubtreeDownward
 nmap <buffer> <silent> m} <Plug>OrgMoveHeadingDownward
 nmap <buffer> <silent> m[[ <Plug>OrgMoveSubtreeUpward
 nmap <buffer> <silent> m{ <Plug>OrgMoveHeadingUpward
+xmap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
 omap <buffer> <silent> { <Plug>OrgJumpToPreviousOperator
-vmap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
+smap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
 nmap <buffer> <silent> { <Plug>OrgJumpToPreviousNormal
+xmap <buffer> <silent> } <Plug>OrgJumpToNextVisual
 omap <buffer> <silent> } <Plug>OrgJumpToNextOperator
-vmap <buffer> <silent> } <Plug>OrgJumpToNextVisual
+smap <buffer> <silent> } <Plug>OrgJumpToNextVisual
 nmap <buffer> <silent> } <Plug>OrgJumpToNextNormal
 nmap <buffer> <silent> <C-S-Left> <Plug>OrgTodoSetBackward
 nmap <buffer> <silent> <C-S-Right> <Plug>OrgTodoSetForward
@@ -157,7 +171,7 @@ setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t
 setlocal concealcursor=inc
 setlocal conceallevel=2
-setlocal completefunc=
+setlocal completefunc=youcompleteme#Complete
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -244,12 +258,16 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 23) / 47)
+1
+normal! zo
+2
+normal! zo
+let s:l = 3 - ((2 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+3
+normal! 06|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

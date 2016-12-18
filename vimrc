@@ -34,7 +34,7 @@ Plug 'tomasr/molokai'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-utils/vim-man'  " Open man pages from within vim
-Plug 'Shougo/denite.nvim' " Manage projects using denite
+Plug 'ctrlpvim/ctrlp.vim' " Quickly navigate between projects
 
 call plug#end()
 
@@ -59,6 +59,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Ultisnippets
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 " Appearances stuff
 let g:airline_theme='jellybeans'
@@ -108,6 +113,12 @@ au Syntax * RainbowParenthesesLoadBraces
 " Indentline
 let g:indentLine_char = '|'
 let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
+
+" Ctrl-P stuff
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_extensions = ['bookmarkdir', 'dir']
+
+
 " #######################################
 " END Variable Declaration
 " #######################################
@@ -128,9 +139,11 @@ map <Leader>j <Plug>(easymotion-bd-jk)
 nnoremap <silent> <Leader><Leader> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Leader> zf
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+inoremap <C-c> <ESC>
+nnoremap Q <nop>
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
 
 " #######################################
 " END maps
@@ -152,7 +165,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set foldmethod=manual
 set number      " Show line numbers
 set linebreak   " Break lines at word (requires Wrap lines)
-set showbreak=+++       " Wrap-broken line prefix
+set showbreak=+++     " Wrap-broken line prefix
 set textwidth=80        " Line wrap (number of cols)
 set showmatch   " Highlight matching brace
 set visualbell  " Use visual bell (no beeping)

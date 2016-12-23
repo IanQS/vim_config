@@ -1,16 +1,16 @@
-CC=g++
-CFLAGS= -Wall -Wextra -pedantic -Werror -Wuninitialized
-LDFLAGS= -Wall -Wextra -pedantic -Werror -Wuninitialized
-SOURCES= hello.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=main
+# the compiler: gcc for C program, define as g++ for C++
+CXX = g++
 
-all: $(SOURCES) $(EXECUTABLE)
-    
-$(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
-
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+# compiler flags:
+CXXFLAGS= -Wall -Wextra -pedantic -Werror -Wuninitialized
+LDFLAGS= 
+SOURCES=$(wildcard *.cpp)
+OBJ=$(SOURCES:.cpp=.o)
 
 
+prog: $(OBJ)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+.PHONY: clean
+clean:
+	rm -f $(OBJ) myprog

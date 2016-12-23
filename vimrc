@@ -133,7 +133,7 @@ if executable("ag")
 
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|Godeps)[\/]'
 
-
+let g:ycm_confirm_extra_conf=0
 " #######################################
 " END Variable Declaration
 " #######################################

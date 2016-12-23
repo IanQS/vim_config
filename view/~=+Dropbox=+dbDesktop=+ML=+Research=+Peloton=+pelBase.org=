@@ -23,55 +23,30 @@ nmap <buffer> <silent> >ih <Plug>OrgDemoteHeadingNormal
 nmap <buffer> <silent> >} <Plug>OrgDemoteHeadingNormal
 nmap <buffer> <silent> >> <Plug>OrgDemoteOnHeadingNormal
 nmap <buffer> <silent> >ah <Plug>OrgDemoteHeadingNormal
-inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent> â =AutoPairsBackInsert()
-inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> î :call AutoPairsJump()a
+inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
+inoremap <buffer> <silent> â =AutoPairsBackInsert()
+inoremap <buffer> <silent> å =AutoPairsFastWrap()
 nmap <buffer> <silent> I <Plug>OrgEditAtFirstCharacter
-xmap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
-xmap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
-xmap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
-xmap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
 omap <buffer> <silent> OR :normal VOR
 omap <buffer> <silent> Or <Plug>OrgOuterTreeOperator
-smap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
-smap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
+vmap <buffer> <silent> OR <Plug>OrgAOuterTreeVisual
+vmap <buffer> <silent> Or <Plug>OrgOuterTreeVisual
 omap <buffer> <silent> OH :normal VOH
 omap <buffer> <silent> Oh <Plug>OrgOuterHeadingOperator
-smap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
-smap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
-xmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
+vmap <buffer> <silent> OH <Plug>OrgAOuterHeadingVisual
+vmap <buffer> <silent> Oh <Plug>OrgOuterHeadingVisual
 omap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenOperator
-smap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
+vmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenVisual
 nmap <buffer> <silent> [[ <Plug>OrgJumpToPreviousSkipChildrenNormal
-nmap <buffer> <silent> \em <Plug>OrgExportToMarkdown
-nmap <buffer> <silent> \eh <Plug>OrgExportToHTML
-nmap <buffer> <silent> \el <Plug>OrgExportToLaTeX
-nmap <buffer> <silent> \eb <Plug>OrgExportToBeamerPDF
-nmap <buffer> <silent> \ep <Plug>OrgExportToPDF
-nmap <buffer> <silent> \caL <Plug>OrgAgendaTimeline
-nmap <buffer> <silent> \caA <Plug>OrgBufferAgendaWeek
-nmap <buffer> <silent> \caa <Plug>OrgAgendaWeek
-nmap <buffer> <silent> \caT <Plug>OrgBufferAgendaTodo
-nmap <buffer> <silent> \cat <Plug>OrgAgendaTodo
-nmap <buffer> <silent> \pi <Plug>OrgDateInsertTimestampInactiveWithCalendar
-nmap <buffer> <silent> \pa <Plug>OrgDateInsertTimestampActiveWithCalendar
-nmap <buffer> <silent> \si <Plug>OrgDateInsertTimestampInactiveCmdLine
-nmap <buffer> <silent> \sa <Plug>OrgDateInsertTimestampActiveCmdLine
-nmap <buffer> <silent> \ft <Plug>OrgFindTags
-nmap <buffer> <silent> \st <Plug>OrgSetTags
-nmap <buffer> <silent> \d <Plug>OrgTodoToggleInteractive
-nmap <buffer> <silent> \ct <Plug>OrgTodoToggleNonInteractive
-nmap <buffer> <silent> \cl <Plug>OrgPlainListItemNewBelow
-nmap <buffer> <silent> \cL <Plug>OrgPlainListItemNewAbove
-nmap <buffer> <silent> \c# <Plug>OrgCheckBoxUpdate
-nmap <buffer> <silent> \cc <Plug>OrgCheckBoxToggle
-nmap <buffer> <silent> \cn <Plug>OrgCheckBoxNewBelow
-nmap <buffer> <silent> \cN <Plug>OrgCheckBoxNewAbove
 nmap <buffer> <silent> \hn <Plug>OrgNewHeadingBelowAfterChildrenNormal
 nmap <buffer> <silent> \hh <Plug>OrgNewHeadingBelowNormal
 nmap <buffer> <silent> \ <Plug>OrgNewHeadingAboveNormal
 nmap <buffer> <silent> \hN <Plug>OrgNewHeadingAboveNormal
+nmap <buffer> <silent> \ft <Plug>OrgFindTags
+nmap <buffer> <silent> \st <Plug>OrgSetTags
+nmap <buffer> <silent> \d <Plug>OrgTodoToggleInteractive
+nmap <buffer> <silent> \ct <Plug>OrgTodoToggleNonInteractive
 nmap <buffer> <silent> \9 zM:set fdl=9
 nmap <buffer> <silent> \8 zM:set fdl=8
 nmap <buffer> <silent> \7 zM:set fdl=7
@@ -84,19 +59,34 @@ nmap <buffer> <silent> \1 zM:set fdl=1
 nmap <buffer> <silent> \0 zM:set fdl=0
 nmap <buffer> <silent> \, <Plug>OrgGlobalToggleFoldingReverse
 nmap <buffer> <silent> \. <Plug>OrgGlobalToggleFoldingNormal
-xmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
+nmap <buffer> <silent> \em <Plug>OrgExportToMarkdown
+nmap <buffer> <silent> \eh <Plug>OrgExportToHTML
+nmap <buffer> <silent> \el <Plug>OrgExportToLaTeX
+nmap <buffer> <silent> \eb <Plug>OrgExportToBeamerPDF
+nmap <buffer> <silent> \ep <Plug>OrgExportToPDF
+nmap <buffer> <silent> \pi <Plug>OrgDateInsertTimestampInactiveWithCalendar
+nmap <buffer> <silent> \pa <Plug>OrgDateInsertTimestampActiveWithCalendar
+nmap <buffer> <silent> \si <Plug>OrgDateInsertTimestampInactiveCmdLine
+nmap <buffer> <silent> \sa <Plug>OrgDateInsertTimestampActiveCmdLine
+nmap <buffer> <silent> \cl <Plug>OrgPlainListItemNewBelow
+nmap <buffer> <silent> \cL <Plug>OrgPlainListItemNewAbove
+nmap <buffer> <silent> \c# <Plug>OrgCheckBoxUpdate
+nmap <buffer> <silent> \cc <Plug>OrgCheckBoxToggle
+nmap <buffer> <silent> \cn <Plug>OrgCheckBoxNewBelow
+nmap <buffer> <silent> \cN <Plug>OrgCheckBoxNewAbove
+nmap <buffer> <silent> \caL <Plug>OrgAgendaTimeline
+nmap <buffer> <silent> \caA <Plug>OrgBufferAgendaWeek
+nmap <buffer> <silent> \caa <Plug>OrgAgendaWeek
+nmap <buffer> <silent> \caT <Plug>OrgBufferAgendaTodo
+nmap <buffer> <silent> \cat <Plug>OrgAgendaTodo
 omap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenOperator
-smap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
+vmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenVisual
 nmap <buffer> <silent> ]] <Plug>OrgJumpToNextSkipChildrenNormal
 nmap <buffer> <silent> ^ <Plug>OrgJumpToFirstCharacter
-xmap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
-xmap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
 omap <buffer> <silent> ar :normal Var
-smap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
+vmap <buffer> <silent> ar <Plug>OrgAInnerTreeVisual
 omap <buffer> <silent> ah :normal Vah
-smap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
-xmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
-xmap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
+vmap <buffer> <silent> ah <Plug>OrgAInnerHeadingVisual
 nmap <buffer> <silent> go <Plug>OrgHyperlinkPreviousLink
 nmap <buffer> <silent> gn <Plug>OrgHyperlinkNextLink
 nmap <buffer> <silent> gil <Plug>OrgHyperlinkInsert
@@ -104,35 +94,31 @@ nmap <buffer> <silent> gyl <Plug>OrgHyperlinkCopy
 nmap <buffer> <silent> gl <Plug>OrgHyperlinkFollow
 omap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingOperator
 omap <buffer> <silent> g{ <Plug>OrgJumpToParentOperator
-smap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
-smap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
+vmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingVisual
+vmap <buffer> <silent> g{ <Plug>OrgJumpToParentVisual
 nmap <buffer> <silent> g} <Plug>OrgJumpToParentsSiblingNormal
 nmap <buffer> <silent> g{ <Plug>OrgJumpToParentNormal
-xmap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
-xmap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
 omap <buffer> <silent> ir <Plug>OrgInnerTreeOperator
-smap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
+vmap <buffer> <silent> ir <Plug>OrgInnerTreeVisual
 omap <buffer> <silent> ih <Plug>OrgInnerHeadingOperator
-smap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
+vmap <buffer> <silent> ih <Plug>OrgInnerHeadingVisual
 nmap <buffer> <silent> m]] <Plug>OrgMoveSubtreeDownward
 nmap <buffer> <silent> m} <Plug>OrgMoveHeadingDownward
 nmap <buffer> <silent> m[[ <Plug>OrgMoveSubtreeUpward
 nmap <buffer> <silent> m{ <Plug>OrgMoveHeadingUpward
-xmap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
 omap <buffer> <silent> { <Plug>OrgJumpToPreviousOperator
-smap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
+vmap <buffer> <silent> { <Plug>OrgJumpToPreviousVisual
 nmap <buffer> <silent> { <Plug>OrgJumpToPreviousNormal
-xmap <buffer> <silent> } <Plug>OrgJumpToNextVisual
 omap <buffer> <silent> } <Plug>OrgJumpToNextOperator
-smap <buffer> <silent> } <Plug>OrgJumpToNextVisual
+vmap <buffer> <silent> } <Plug>OrgJumpToNextVisual
 nmap <buffer> <silent> } <Plug>OrgJumpToNextNormal
+nmap <buffer> <silent> <C-CR> <Plug>OrgNewHeadingBelowAfterChildrenNormal
+nmap <buffer> <silent> <S-CR> <Plug>OrgNewHeadingBelowNormal
+nmap <buffer> <silent> <C-S-CR> <Plug>OrgNewHeadingAboveNormal
 nmap <buffer> <silent> <C-S-Left> <Plug>OrgTodoSetBackward
 nmap <buffer> <silent> <C-S-Right> <Plug>OrgTodoSetForward
 nmap <buffer> <silent> <S-Left> <Plug>OrgTodoBackward
 nmap <buffer> <silent> <S-Right> <Plug>OrgTodoForward
-nmap <buffer> <silent> <C-CR> <Plug>OrgNewHeadingBelowAfterChildrenNormal
-nmap <buffer> <silent> <S-CR> <Plug>OrgNewHeadingBelowNormal
-nmap <buffer> <silent> <C-S-CR> <Plug>OrgNewHeadingAboveNormal
 nmap <buffer> <silent> <S-Tab> <Plug>OrgToggleFoldingReverse
 imap <buffer> <silent>  <Plug>OrgPromoteOnHeadingInsert
 inoremap <buffer> <silent>  =AutoPairsDelete()
@@ -142,8 +128,8 @@ inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
 inoremap <buffer> <silent> ( =AutoPairsInsert('(')
 inoremap <buffer> <silent> ) =AutoPairsInsert(')')
-noremap <buffer> <silent> ð :call AutoPairsToggle()
 noremap <buffer> <silent> î :call AutoPairsJump()
+noremap <buffer> <silent> ð :call AutoPairsToggle()
 inoremap <buffer> <silent> [ =AutoPairsInsert('[')
 inoremap <buffer> <silent> ] =AutoPairsInsert(']')
 inoremap <buffer> <silent> ` =AutoPairsInsert('`')
@@ -240,7 +226,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(1)
+setlocal statusline=%!airline#statusline(4)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -258,11 +244,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 2 - ((1 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+2
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

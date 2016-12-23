@@ -3,18 +3,18 @@ argglobal
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <buffer> <silent> <BS> =AutoPairsDelete()
-inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent> â =AutoPairsBackInsert()
-inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> î :call AutoPairsJump()a
+inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
+inoremap <buffer> <silent> â =AutoPairsBackInsert()
+inoremap <buffer> <silent> å =AutoPairsFastWrap()
 inoremap <buffer> <silent>  =AutoPairsDelete()
 inoremap <buffer> <silent>   =AutoPairsSpace()
 inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
 inoremap <buffer> <silent> ( =AutoPairsInsert('(')
 inoremap <buffer> <silent> ) =AutoPairsInsert(')')
-noremap <buffer> <silent> ð :call AutoPairsToggle()
 noremap <buffer> <silent> î :call AutoPairsJump()
+noremap <buffer> <silent> ð :call AutoPairsToggle()
 inoremap <buffer> <silent> [ =AutoPairsInsert('[')
 inoremap <buffer> <silent> ] =AutoPairsInsert(']')
 inoremap <buffer> <silent> ` =AutoPairsInsert('`')
@@ -37,8 +37,8 @@ setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=#%s
+setlocal comments=:#,:!
+setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t
 setlocal concealcursor=inc
 setlocal conceallevel=2
@@ -53,23 +53,23 @@ setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'snippets'
-setlocal filetype=snippets
+setlocal expandtab
+if &filetype != 'jproperties'
+setlocal filetype=jproperties
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=99
+setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
-setlocal foldmethod=syntax
+setlocal foldmethod=manual
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcqj
+setlocal formatoptions=cqj
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=0
@@ -105,7 +105,7 @@ setlocal noscrollbind
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal signcolumn=auto
-setlocal nosmartindent
+setlocal smartindent
 setlocal softtabstop=4
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -115,8 +115,8 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'snippets'
-setlocal syntax=snippets
+if &syntax != 'jproperties'
+setlocal syntax=jproperties
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -129,12 +129,13 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 170 - ((33 * winheight(0) + 28) / 56)
+silent! normal! zE
+let s:l = 12 - ((11 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-170
-normal! 016|
+12
+normal! 051|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

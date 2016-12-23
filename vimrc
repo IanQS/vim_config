@@ -9,6 +9,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'valloric/youcompleteme'
+Plug 'rdnetto/YCM-Generator'
 
 
 "" Interface plugins
@@ -34,7 +35,9 @@ Plug 'tomasr/molokai'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-utils/vim-man'  " Open man pages from within vim
-Plug 'ctrlpvim/ctrlp.vim' " Quickly navigate between projects
+
+" Session management
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 call plug#end()
 
@@ -118,6 +121,18 @@ let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_extensions = ['bookmarkdir', 'dir']
 
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+let g:CtrlSpaceSymbols = {"File": "FILE", "CTab": "CTAB", "Tabs": "TABS" }
+
+if executable("ag")
+        let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+    endif
+
+let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|Godeps)[\/]'
+
 
 " #######################################
 " END Variable Declaration
@@ -129,7 +144,7 @@ let g:ctrlp_extensions = ['bookmarkdir', 'dir']
 "" #######################################
 " Toggles
 map <C-n> :NERDTreeToggle<CR>
-nnoremap <C-p> :UndotreeToggle<cr>
+nnoremap <Leader>u :UndotreeToggle<cr>
 
 " Move to word
 map  <Leader>h <Plug>(easymotion-bd-fl)
@@ -158,6 +173,9 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 filetype plugin indent on
 syntax enable
 
+set nocompatible
+set hidden
+set showtabline=0
 
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 

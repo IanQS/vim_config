@@ -10,6 +10,7 @@ Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'valloric/youcompleteme'
 Plug 'rdnetto/YCM-Generator'
+Plug 'scrooloose/nerdcommenter'
 
 
 "" Interface plugins
@@ -133,7 +134,17 @@ if executable("ag")
 
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|Godeps)[\/]'
 
+" YCM stuff
 let g:ycm_confirm_extra_conf=0
+
+" NERDSPACE
+let g:NERDSpaceDelims = 1 " Add spaces after comment delimiters by default
+
+ let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
+
+let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
+
+let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 " #######################################
 " END Variable Declaration
 " #######################################

@@ -1,0 +1,11 @@
+vim = desk
+projects = drawers (bookmarks list displays FAVE projects)
+
+file = documents from drawers (File List -> see drawer contents)
+
+buffer = selected document from drawer (aka file on desk. buffer list = shows
+all open buffers)
+
+TABS: (piles of files that you can just pick )
+
+workspace: "picture of the current desk"

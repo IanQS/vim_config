@@ -186,6 +186,7 @@ syntax enable
 
 set nocompatible
 set hidden
+set pastetoggle=<F2>
 set showtabline=0
 
 autocmd BufWinLeave *.* mkview

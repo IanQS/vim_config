@@ -156,6 +156,7 @@ let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace wh
 " Toggles
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>u :UndotreeToggle<cr>
+nnoremap q: :q<CR>
 
 " Move to word
 map  <Leader>h <Plug>(easymotion-bd-fl)
